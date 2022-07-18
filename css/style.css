@@ -84,29 +84,26 @@ li {
 }
 
 ul.dropdown {
-  display: none;
-}
-
-#nav-patients,
-#nav-documents {
-  opacity: 0;
-}
-
-#nav-patients:checked + ul.dropdown,
-#nav-documents:checked + ul.dropdown {
-  display: block;
+  overflow: hidden;
+  margin: 0;
+  transition: height 0.3s ease-in-out;
+  height: auto;
 }
 
 nav a,
-nav label {
+nav .toggle {
   cursor: pointer;
   color: var(--white);
+  font-weight: inherit;
+  background: none;
+  border: none;
+  padding: 0;
   text-decoration: none;
   transition: 0.3s ease-in-out;
 }
 
 nav a:hover,
-nav label:hover {
+nav .toggle:hover {
   color: var(--black);
 }
 

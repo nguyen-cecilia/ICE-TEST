@@ -41,25 +41,8 @@
           <li><a href="">Accueil</a></li>
           <li><a href="">Mes ordonnances</a></li>
           <li>
-            <label for="nav-patients"
-              ><i class="bi-person"></i> Mes patients
-              <svg
-                width="15"
-                height="8"
-                viewBox="0 0 15 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M0.347706 0.539761C0.878052 -0.0966543 1.8239 -0.18264 2.46031 0.347706L7.50004 4.54747L12.5398 0.347706C13.1762 -0.18264 14.122 -0.0966543 14.6524 0.539761C15.1827 1.17618 15.0967 2.12202 14.4603 2.65237L8.46031 7.65237C7.90404 8.11593 7.09603 8.11593 6.53976 7.65237L0.539761 2.65237C-0.0966543 2.12202 -0.18264 1.17618 0.347706 0.539761Z"
-                  fill="#FFFFFF"
-                />
-              </svg>
-            </label>
-            <input id="nav-patients" type="checkbox" />
-            <ul class="dropdown">
+            <button class="toggle">Mes patients</button>
+            <ul class="dropdown collapsible">
               <li><a href="#">Tous les patients</a></li>
               <li><a href="#">Patients en attente</a></li>
               <li><a href="#">Patients archivés</a></li>
@@ -67,11 +50,8 @@
           </li>
           <li><a href="">Mes pharmacies</a></li>
           <li>
-            <label for="nav-documents"
-              ><i class="bi-file-earmark-medical"></i> Mes documents</label
-            >
-            <input id="nav-documents" type="checkbox" />
-            <ul class="dropdown">
+            <button class="toggle">Mes documents</button>
+            <ul class="dropdown collapsible">
               <li><a href="#">Ordonnances actives</a></li>
               <li><a href="#">Ordonnances archivées</a></li>
             </ul>
@@ -100,5 +80,73 @@
         </section>
       </main>
     </div>
+    <script>
+      function collapseSection(element) {
+        // get the height of the element's inner content, regardless of its actual size
+        let sectionHeight = element.scrollHeight;
+
+        // temporarily disable all css transitions
+        let elementTransition = element.style.transition;
+        element.style.transition = "";
+
+        // on the next frame (as soon as the previous style change has taken effect),
+        // explicitly set the element's height to its current pixel height, so we
+        // aren't transitioning out of 'auto'
+        requestAnimationFrame(function () {
+          element.style.height = sectionHeight + "px";
+          element.style.transition = elementTransition;
+
+          // on the next frame (as soon as the previous style change has taken effect),
+          // have the element transition to height: 0
+          requestAnimationFrame(function () {
+            element.style.height = 0 + "px";
+          });
+        });
+
+        // mark the section as "currently collapsed"
+        element.setAttribute("data-collapsed", "true");
+      }
+
+      function expandSection(element) {
+        // get the height of the element's inner content, regardless of its actual size
+        let sectionHeight = element.scrollHeight;
+
+        // have the element transition to the height of its inner content
+        element.style.height = sectionHeight + "px";
+
+        // when the next css transition finishes (which should be the one we just triggered)
+        element.addEventListener("transitionend", function (e) {
+          // remove this event listener so it only gets triggered once
+          element.removeEventListener("transitionend", arguments.callee);
+
+          // remove "height" from the element's inline styles, so it can return to its initial value
+          element.style.height = null;
+        });
+
+        // mark the section as "currently not collapsed"
+        element.setAttribute("data-collapsed", "false");
+      }
+
+      let buttons = document.querySelectorAll(".toggle");
+      let sections = document.querySelectorAll(".dropdown.collapsible");
+
+      sections.forEach((e) => {
+        collapseSection(e);
+      });
+
+      buttons.forEach((button, index) => {
+        let section = sections[index];
+        button.addEventListener("click", function (e) {
+          let isCollapsed = section.getAttribute("data-collapsed") === "true";
+
+          if (isCollapsed) {
+            expandSection(section);
+            section.setAttribute("data-collapsed", "false");
+          } else {
+            collapseSection(section);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
