@@ -38,11 +38,11 @@ body {
 }
 
 #left {
-  width: 20%;
+  width: 15%;
 }
 
 #right {
-  width: 80%;
+  width: 85%;
 }
 
 /* ___ HEADER */
@@ -55,7 +55,7 @@ header {
 }
 
 header h1 {
-  margin-left: 20%;
+  margin-left: 15%;
 }
 
 /* ___ MAIN */
@@ -75,36 +75,105 @@ nav {
 
 ul {
   list-style-type: none;
-  margin: 10px 0;
+  margin: 0;
   padding: 0;
 }
 
-li {
-  margin: 30px 0 30px 15%;
+ul#menu > li {
+  margin: 10% 0;
+  padding: 0;
 }
 
 ul.dropdown {
-  overflow: hidden;
   margin: 0;
-  transition: height 0.3s ease-in-out;
   height: auto;
+  overflow: hidden;
+  font-size: 0.8rem;
+  transition: height 0.3s ease-in-out;
+}
+
+ul.dropdown li {
+  margin: 3% 10%;
+}
+
+ul.dropdown a,
+ul.dropdown a:hover {
+  border-left: none;
+}
+
+.toggle.open {
+  color: var(--black);
+  border-left: 5px solid var(--white);
 }
 
 nav a,
-nav .toggle {
+.toggle {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 2% 10%;
   cursor: pointer;
   color: var(--white);
   font-weight: inherit;
   background: none;
-  border: none;
-  padding: 0;
+  border-left: 5px solid transparent;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
   text-decoration: none;
-  transition: 0.3s ease-in-out;
+  outline: none;
 }
 
 nav a:hover,
 nav .toggle:hover {
   color: var(--black);
+  border-left: 5px solid var(--white);
+}
+
+.fa-chevron-down {
+  margin: 0 0 0 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.rotate {
+  transform: rotate(-180deg);
+  transition: 0.3s ease-in-out;
+}
+
+.drop-icons {
+  margin: 0 0.5rem 0 -1.5rem;
+  font-size: 0.8rem;
+  opacity: 0;
+}
+
+.slidein {
+  animation: slidein 0.3s ease-in-out both;
+}
+
+.slideout {
+  animation: slideout 0.3s ease-in-out both;
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    margin-left: -1.5rem;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+@keyframes slideout {
+  from {
+    opacity: 1;
+    margin-left: 0;
+  }
+  to {
+    opacity: 0;
+    margin-left: -1.5rem;
+  }
 }
 
 /* section 'les patients du cabinet' */

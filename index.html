@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://kit.fontawesome.com/f496f93e7c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="left" class="column">
@@ -37,11 +39,14 @@
         </h1>
       </header>
       <nav>
-        <ul>
+        <ul id="menu">
           <li><a href="">Accueil</a></li>
           <li><a href="">Mes ordonnances</a></li>
           <li>
-            <button class="toggle">Mes patients</button>
+            <button class="toggle">
+              <i class="fa-regular fa-user drop-icons"></i> Mes patients
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
             <ul class="dropdown collapsible">
               <li><a href="#">Tous les patients</a></li>
               <li><a href="#">Patients en attente</a></li>
@@ -50,7 +55,10 @@
           </li>
           <li><a href="">Mes pharmacies</a></li>
           <li>
-            <button class="toggle">Mes documents</button>
+            <button class="toggle">
+              <i class="fa-solid fa-file-medical drop-icons"></i> Mes documents
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
             <ul class="dropdown collapsible">
               <li><a href="#">Ordonnances actives</a></li>
               <li><a href="#">Ordonnances archivées</a></li>
@@ -67,14 +75,12 @@
         <section>
           <h2>Les patients du cabinet</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque venenatis nisl id nulla semper tristique. Sed eleifend
-            justo massa, sed mollis metus venenatis quis. Phasellus eget euismod
-            eros. Maecenas laoreet, diam ut pretium dictum, enim lacus luctus
-            nisi, quis interdum nunc nisl et urna. Praesent quis lectus et erat
-            fermentum pulvinar. Vestibulum maximus, metus a tristique
-            vestibulum, nulla urna vehicula elit, et finibus sem justo vitae
-            dolor. Class aptent taciti sociosqu ad litora torquent per conubia
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque venenatis nisl id
+            nulla semper tristique. Sed eleifend justo massa, sed mollis metus venenatis quis.
+            Phasellus eget euismod eros. Maecenas laoreet, diam ut pretium dictum, enim lacus luctus
+            nisi, quis interdum nunc nisl et urna. Praesent quis lectus et erat fermentum pulvinar.
+            Vestibulum maximus, metus a tristique vestibulum, nulla urna vehicula elit, et finibus
+            sem justo vitae dolor. Class aptent taciti sociosqu ad litora torquent per conubia
             nostra, per inceptos himenaeos. Nullam et mauris neque.
           </p>
         </section>
@@ -129,20 +135,52 @@
 
       let buttons = document.querySelectorAll(".toggle");
       let sections = document.querySelectorAll(".dropdown.collapsible");
+      let chevrons = document.querySelectorAll(".fa-chevron-down");
+      let dropicons = document.querySelectorAll(".drop-icons");
+      //console.log(dropicon);
 
       sections.forEach((e) => {
         collapseSection(e);
       });
 
       buttons.forEach((button, index) => {
+        if (index == 0) {
+          var section2 = sections[1];
+          var button2 = buttons[1];
+          //console.log(button2);
+        } else {
+          var section2 = sections[0];
+          var button2 = buttons[0];
+          //console.log(button2);
+        }
+
         let section = sections[index];
+        let chevron = chevrons[index];
+        let dropicon = dropicons[index];
+
         button.addEventListener("click", function (e) {
           let isCollapsed = section.getAttribute("data-collapsed") === "true";
 
           if (isCollapsed) {
+            button.classList.add("open");
+            chevron.classList.add("rotate");
+            dropicon.classList.add("slidein");
+            dropicon.classList.remove("slideout");
             expandSection(section);
             section.setAttribute("data-collapsed", "false");
+
+            /*if (document.getElementsByClassName("open").length > 1) {
+              console.log("Y EN A TROP");
+              collapseSection(section2);
+              button2.classList.remove("open");
+            } else {
+              console.log("PATATE");
+            }*/
           } else {
+            button.classList.remove("open");
+            chevron.classList.remove("rotate");
+            dropicon.classList.remove("slidein");
+            dropicon.classList.add("slideout");
             collapseSection(section);
           }
         });
