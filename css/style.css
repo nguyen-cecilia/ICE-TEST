@@ -6,7 +6,7 @@
 :root {
   --black: #363636;
   --grey: #757575;
-  --light-grey: #dddddd;
+  --light-grey: #e0e0e0;
   --white: #ffffff;
   --green: #3ce0a0;
   --light-green: #e4f4ed;
@@ -275,6 +275,10 @@ h3 {
   font-weight: inherit;
 }
 
+#search:focus::placeholder {
+  color: transparent;
+}
+
 #search-lens {
   position: absolute;
   margin: auto;
@@ -282,4 +286,112 @@ h3 {
   right: 60%;
 }
 
+/* divider */
+
+.divider {
+  width: 80%;
+  margin: auto;
+  border-top: 1px solid var(--light-grey);
+}
+
 /* liste patients */
+
+#patients-list {
+  width: 100%;
+  padding: 40px 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.patient {
+  max-width: 280px;
+  margin: 10% 20px 20px 20px;
+  padding: 30px 25px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.patient:nth-child(odd) {
+  background: var(--light-green);
+  border: 3px solid var(--light-green);
+}
+
+.patient:nth-child(even) {
+  border: 3px solid var(--green);
+}
+
+.patient-avatar {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: -35%;
+}
+
+.patient-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: var(--green);
+  margin: 10px 0;
+}
+
+.patient-age {
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+
+.patient-info {
+  margin: 30px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px 0;
+  align-content: center;
+  word-break: break-all;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+.patient-info dt {
+  justify-self: center;
+}
+
+.patient-info dd {
+  margin: 0;
+}
+
+.patient-info a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+.patient-info a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  visibility: hidden;
+  transform: scaleX(0);
+  background: var(--green);
+  transition: 0.3s ease-in-out;
+}
+
+.patient-info a:hover {
+  color: var(--grey);
+  border-bottom: 1px solid var(-green);
+}
+
+.patient-info a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
