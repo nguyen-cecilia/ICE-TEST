@@ -231,6 +231,11 @@ h2 {
   border: 2px solid var(--green);
   color: var(--green);
   font-weight: 900;
+  transition: 0.3s ease-in-out;
+}
+
+.shortcut:hover {
+  transform: scale(1.1);
 }
 
 .sc-fill {
