@@ -6,6 +6,7 @@
 :root {
   --black: #363636;
   --grey: #757575;
+  --light-grey: #dddddd;
   --white: #ffffff;
   --green: #3ce0a0;
   --light-green: #e4f4ed;
@@ -57,13 +58,6 @@ header {
 
 header h1 {
   margin-left: 15%;
-}
-
-/* ___ MAIN */
-
-main {
-  width: 100%;
-  display: flex;
 }
 
 /* ___ LEFT */
@@ -179,6 +173,14 @@ nav .toggle:hover {
 }
 
 /* ___ RIGHT */
+
+/* ___ MAIN */
+
+main {
+  width: 100%;
+  overflow: auto;
+}
+
 /* section */
 
 section {
@@ -187,7 +189,7 @@ section {
 
 /* raccourci */
 
-#raccourcis {
+#shortcuts {
   width: 100%;
   position: relative;
   display: flex;
@@ -198,7 +200,7 @@ section {
   background: linear-gradient(180deg, var(--light-green) 0%, var(--white-green) 100%);
 }
 
-#raccourcis:after {
+#shortcuts:after {
   content: "";
   position: absolute;
   top: 100%;
@@ -213,8 +215,8 @@ section {
 
 h2 {
   width: 100%;
-  font-size: 2.5em;
-  margin: auto;
+  font-size: 2.5rem;
+  margin: auto auto 30px auto;
 }
 
 .shortcut {
@@ -222,7 +224,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 40px 10px;
+  margin: 10px;
   padding: 20px 30px;
   background: none;
   border-radius: 100px;
@@ -242,5 +244,42 @@ h2 {
 }
 
 /* recherche */
+
+#search-zone {
+  width: 100%;
+  margin: auto;
+  padding: 60px 0;
+  position: relative;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--green);
+}
+
+.search-help {
+  width: 28%;
+  margin: 25px auto;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--grey);
+}
+
+#search {
+  padding: 20px 80px;
+  border-radius: 100px;
+  outline: none;
+  border: 1px solid var(--light-grey);
+  text-align: center;
+  font-weight: inherit;
+}
+
+#search-lens {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 60%;
+}
 
 /* liste patients */
