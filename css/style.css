@@ -51,13 +51,50 @@ body {
 
 header {
   width: 100%;
-  height: 100px;
+  min-height: 100px;
   display: flex;
   align-items: center;
 }
 
+#right header {
+  justify-content: flex-end;
+}
+
 header h1 {
   margin-left: 15%;
+}
+
+#user {
+  cursor: pointer;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  font-weight: inherit;
+  text-align: right;
+}
+
+.user-name {
+  max-width: min-content;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  margin: 0 15px;
+  border-radius: 100px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#user .fa-chevron-down {
+  color: var(--green);
 }
 
 /* ___ LEFT */
@@ -67,6 +104,7 @@ nav {
   background: var(--green);
   height: calc(100% - 100px);
   padding: 10% 0;
+  position: relative;
 }
 
 ul {
@@ -102,7 +140,7 @@ ul.dropdown a:hover {
   border-left: 5px solid var(--white);
 }
 
-nav a,
+nav ul a,
 .toggle {
   width: 100%;
   display: block;
@@ -120,7 +158,7 @@ nav a,
   outline: none;
 }
 
-nav a:hover,
+nav ul a:hover,
 nav .toggle:hover {
   color: var(--black);
   border-left: 5px solid var(--white);
@@ -170,6 +208,27 @@ nav .toggle:hover {
     opacity: 0;
     margin-left: -1.5rem;
   }
+}
+
+/* contact */
+
+#contact {
+  width: max-content;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: 50px;
+  background: var(--white);
+  border-radius: 0 50px 50px 0;
+  transition: padding 0.3s ease-in-out;
+}
+
+nav:hover #contact {
+  padding-left: 50px;
+}
+
+#contact a {
+  margin: 0 5px;
+  text-decoration: none;
 }
 
 /* ___ RIGHT */
@@ -303,7 +362,7 @@ h3 {
 
 #patients-list {
   width: 100%;
-  padding: 40px 150px;
+  padding: 40px 130px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
