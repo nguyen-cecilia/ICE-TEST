@@ -71,7 +71,7 @@
           <li><a href="">Parrainer un cabinet</a></li>
         </ul>
         <aside id="contact">
-          <a href=""
+          <a href="" alt="Téléphone" title="Téléphone"
             ><svg
               width="22"
               height="21"
@@ -85,7 +85,7 @@
               />
             </svg>
           </a>
-          <a href="">
+          <a href="" alt="Mail" title="Mail">
             <svg
               width="25"
               height="20"
@@ -110,13 +110,18 @@
     </div>
     <div id="right" class="column">
       <header>
-        <button id="user">
+        <button id="user" onclick="displayNav();">
           <span class="user-name">Lola Dufour</span>
           <figure class="user-avatar">
             <img src="img/Avatar.png" alt="Avatar" />
           </figure>
           <i class="fa-solid fa-chevron-down"></i>
         </button>
+        <ul id="user-nav" style="display: none">
+          <li><a href="">Mon compte</a></li>
+          <li><a href="">Aide</a></li>
+          <li><a href="">Déconnexion</a></li>
+        </ul>
       </header>
       <main>
         <section id="shortcuts">
@@ -774,6 +779,11 @@
       </main>
     </div>
     <script>
+      function displayNav() {
+        const nav = document.getElementById("user-nav");
+        nav.style.display !== "none" ? (nav.style.display = "none") : (nav.style.display = "block");
+      }
+
       function collapseSection(element) {
         // get the height of the element's inner content, regardless of its actual size
         let sectionHeight = element.scrollHeight;
