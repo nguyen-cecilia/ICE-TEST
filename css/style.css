@@ -354,7 +354,7 @@ nav .toggle:hover {
 
   nav {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     left: -100vw;
     z-index: 99;
