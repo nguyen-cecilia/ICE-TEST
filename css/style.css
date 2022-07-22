@@ -175,7 +175,8 @@ header h1 {
 /* ___ LEFT */
 /* navigation / menu */
 
-#menu-mobile {
+#menu-mobile,
+.menu-control {
   display: none;
 }
 
@@ -304,6 +305,7 @@ nav .toggle:hover {
   }
 
   .menu-control {
+    display: block;
     background: none;
     border: none;
     outline: none;
@@ -407,7 +409,13 @@ nav:hover #contact {
 
 @media only screen and (max-width: 768px) {
   #contact {
-    display: none;
+    position: unset;
+    margin: 20px auto auto auto;
+    border-radius: 50px;
+  }
+
+  nav:hover #contact {
+    padding: 15px 20px;
   }
 }
 
