@@ -284,6 +284,7 @@ nav .toggle:hover {
     opacity: 1;
     margin-left: 0;
   }
+
   to {
     opacity: 0;
     margin-left: -1.5rem;
@@ -360,7 +361,7 @@ nav .toggle:hover {
     z-index: 99;
     overflow: auto;
     display: block;
-    /*padding-top: 60px;*/
+    padding-top: 10px;
     transition: 0.4s left cubic-bezier(0.7, 0, 0.175, 1);
   }
 
@@ -421,7 +422,6 @@ nav:hover #contact {
 }
 
 /* ___ RIGHT */
-
 /* ___ MAIN */
 
 main {

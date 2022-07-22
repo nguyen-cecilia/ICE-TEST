@@ -12,7 +12,12 @@
     <script src="https://kit.fontawesome.com/f496f93e7c.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!--          -----------------------------          -->
+    <!--                ___ LEFT COLUMN                  -->
+    <!--          CONTENT: logo, navigation bar          -->
+    <!--          -----------------------------          -->
     <div id="left" class="column">
+      <!-- logo -->
       <header>
         <h1>
           <a href="#">
@@ -41,6 +46,8 @@
           </a>
         </h1>
       </header>
+
+      <!-- nav [ONLY MOBILE] -->
       <aside id="menu-mobile">
         <button class="menu-control" id="menu-open">
           <i class="fa-solid fa-bars"></i>
@@ -50,6 +57,8 @@
           points
         </div>
       </aside>
+
+      <!-- nav [ONLY COMPUTER] -->
       <nav>
         <ul id="menu">
           <li><a href="">Accueil</a></li>
@@ -79,6 +88,8 @@
           <li><a href="">Mes Pilbeez</a></li>
           <li><a href="">Parrainer un cabinet</a></li>
         </ul>
+
+        <!-- contact buttons -->
         <aside id="contact">
           <a href="" alt="Téléphone" title="Téléphone"
             ><svg
@@ -115,12 +126,20 @@
             </svg>
           </a>
         </aside>
+
+        <!-- button to close nav [ONLY MOBILE] -->
         <button class="menu-control" id="menu-close">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </nav>
     </div>
+
+    <!--            -----------------------------           -->
+    <!--                 ___ RIGHT COLUMN                   -->
+    <!-- CONTENT: user avatar, title, search, patients list -->
+    <!--            -----------------------------           -->
     <div id="right" class="column">
+      <!-- user avatar -->
       <header>
         <button id="user" onclick="displayNav();">
           <span class="user-name">Lola Dufour</span>
@@ -135,7 +154,9 @@
           <li><a href="">Déconnexion</a></li>
         </ul>
       </header>
+
       <main>
+        <!-- title, shortcuts buttons -->
         <section id="shortcuts">
           <h2>Les patients du cabinet</h2>
           <button class="shortcut sc-fill">
@@ -227,6 +248,8 @@
             <div class="sc-text">Voir les aidants</div>
           </button>
         </section>
+
+        <!-- search for a patient -->
         <section id="search-zone">
           <figure id="search-lens">
             <svg
@@ -262,15 +285,19 @@
               />
             </svg>
           </figure>
-
           <h3>Recherchez un patient</h3>
           <div class="search-help">
             Entrez les premières lettres du nom du patient que vous recherchez.
           </div>
           <input id="search" type="text" placeholder="Nom du patient" />
         </section>
+
+        <!-- section divier -->
         <div class="divider"></div>
+
+        <!-- patients list -->
         <section id="patients-list">
+          <!-- patient 1 : cécile moulin -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/Cécile_Moulin.png" alt="Avatar Cécile Moulin" />
@@ -357,6 +384,8 @@
               <dd><a href="">voir ses ordonnances</a></dd>
             </dl>
           </article>
+
+          <!-- patient 2 : juliette masselis -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/Juliette_Masselis.png" alt="Avatar Juliette Masselis" />
@@ -443,6 +472,8 @@
               <dd><a href="">voir ses ordonnances</a></dd>
             </dl>
           </article>
+
+          <!-- patient 3 : rené guitay -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/René_Guitay.png" alt="Avatar René Guitay" />
@@ -529,6 +560,8 @@
               <dd><a href="">voir ses ordonnances</a></dd>
             </dl>
           </article>
+
+          <!-- patient 4 : clara camalet -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/Clara_Camalet.png" alt="Avatar Clara Camelet" />
@@ -615,6 +648,8 @@
               <dd><a href="">voir ses ordonnances</a></dd>
             </dl>
           </article>
+
+          <!-- patient 5 : lola dufour -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/Lola_Dufour.png" alt="Avatar Lola Dufour" />
@@ -701,6 +736,8 @@
               <dd><a href="">voir ses ordonnances</a></dd>
             </dl>
           </article>
+
+          <!-- patient 6 : étienne morlé -->
           <article class="patient">
             <figure class="patient-avatar">
               <img src="img/Etienne_Morlé.png" alt="Avatar Etienne Morlé" />
@@ -790,76 +827,67 @@
         </section>
       </main>
     </div>
-    <script>
+
+    <!-- script -->
+    <script type="text/javascript">
+      /* DISPLAY THE USER AVATAR NAVIGATION */
       function displayNav() {
         const nav = document.getElementById("user-nav");
         nav.style.display !== "none" ? (nav.style.display = "none") : (nav.style.display = "block");
       }
 
+      /* COLLAPSE NAV HIDDEN SECTION */
       function collapseSection(element) {
-        // get the height of the element's inner content, regardless of its actual size
         let sectionHeight = element.scrollHeight;
 
-        // temporarily disable all css transitions
         let elementTransition = element.style.transition;
         element.style.transition = "";
 
-        // on the next frame (as soon as the previous style change has taken effect),
-        // explicitly set the element's height to its current pixel height, so we
-        // aren't transitioning out of 'auto'
         requestAnimationFrame(function () {
           element.style.height = sectionHeight + "px";
           element.style.transition = elementTransition;
 
-          // on the next frame (as soon as the previous style change has taken effect),
-          // have the element transition to height: 0
           requestAnimationFrame(function () {
             element.style.height = 0 + "px";
           });
         });
 
-        // mark the section as "currently collapsed"
         element.setAttribute("data-collapsed", "true");
       }
 
+      /* EXPAND NAV HIDDEN SECTION */
       function expandSection(element) {
-        // get the height of the element's inner content, regardless of its actual size
         let sectionHeight = element.scrollHeight;
 
-        // have the element transition to the height of its inner content
         element.style.height = sectionHeight + "px";
 
-        // when the next css transition finishes (which should be the one we just triggered)
         element.addEventListener("transitionend", function (e) {
-          // remove this event listener so it only gets triggered once
           element.removeEventListener("transitionend", arguments.callee);
-
-          // remove "height" from the element's inline styles, so it can return to its initial value
           element.style.height = null;
         });
 
-        // mark the section as "currently not collapsed"
         element.setAttribute("data-collapsed", "false");
       }
 
+      /* GET ALL THE SELECTORS FROM THE PAGE */
       const buttons = document.querySelectorAll(".toggle");
       const sections = document.querySelectorAll(".dropdown.collapsible");
       const chevrons = document.querySelectorAll(".fa-chevron-down");
       const dropicons = document.querySelectorAll(".drop-icons");
 
+      /* BY DEFAULT, COLLAPSE ALL THE SECTIONS IN THE NAV */
       sections.forEach((e) => {
         collapseSection(e);
       });
 
+      /* EXPAND / COLLAPSE DEPENDING ON THE BUTTON AND SITUATION */
       buttons.forEach((button, index) => {
         if (index == 0) {
           var section2 = sections[1];
           var button2 = buttons[1];
-          //console.log(button2);
         } else {
           var section2 = sections[0];
           var button2 = buttons[0];
-          //console.log(button2);
         }
 
         let section = sections[index];
@@ -876,14 +904,6 @@
             dropicon.classList.remove("slideout");
             expandSection(section);
             section.setAttribute("data-collapsed", "false");
-
-            /*if (document.getElementsByClassName("open").length > 1) {
-              console.log("Y EN A TROP");
-              collapseSection(section2);
-              button2.classList.remove("open");
-            } else {
-              console.log("PATATE");
-            }*/
           } else {
             button.classList.remove("open");
             chevron.classList.remove("rotate");
@@ -894,6 +914,7 @@
         });
       });
 
+      /* TOGGLE NAV FOR MOBILE */
       const togglers = document.querySelectorAll(".menu-control");
       const menu = document.querySelector("nav");
 
