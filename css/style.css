@@ -522,7 +522,8 @@ h3 {
   }
 
   #search {
-    padding: 20px 40px;
+    max-width: 90%;
+    padding: 20px 0;
     font-size: 1.2rem;
   }
 
@@ -647,7 +648,16 @@ h4 {
   }
 
   .patient {
-    margin: 170px 45px 120px 45px;
+    padding: 20px 10px;
+    margin: 170px 40px 120px 40px;
     transform: scale(1.2);
+  }
+
+  .patient:nth-child(odd) {
+    border: 2px solid var(--light-green);
+  }
+
+  .patient:nth-child(even) {
+    border: 2px solid var(--green);
   }
 }
