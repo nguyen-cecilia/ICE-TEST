@@ -41,6 +41,15 @@
           </a>
         </h1>
       </header>
+      <aside id="menu-mobile">
+        <button id="menu-control">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="pilbeez">
+          <h5>1740</h5>
+          points
+        </div>
+      </aside>
       <nav>
         <ul id="menu">
           <li><a href="">Accueil</a></li>
@@ -881,6 +890,13 @@
             collapseSection(section);
           }
         });
+      });
+
+      const toggler = document.querySelector("#menu-control");
+      const menu = document.querySelector("nav");
+
+      toggler.addEventListener("click", () => {
+        menu.classList.toggle("active");
       });
     </script>
   </body>
