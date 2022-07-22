@@ -353,7 +353,7 @@ nav .toggle:hover {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    bottom: -100%;
+    bottom: -100vh;
     z-index: 99;
     overflow: auto;
     display: block;
