@@ -360,7 +360,7 @@ nav .toggle:hover {
     z-index: 99;
     overflow: auto;
     display: block;
-    padding-top: 60px;
+    /*padding-top: 60px;*/
     transition: 0.4s left cubic-bezier(0.7, 0, 0.175, 1);
   }
 
