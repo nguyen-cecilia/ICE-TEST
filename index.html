@@ -42,7 +42,7 @@
         </h1>
       </header>
       <aside id="menu-mobile">
-        <button id="menu-control">
+        <button class="menu-control" id="menu-open">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div id="pilbeez">
@@ -115,6 +115,9 @@
             </svg>
           </a>
         </aside>
+        <button class="menu-control" id="menu-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </nav>
     </div>
     <div id="right" class="column">
@@ -839,11 +842,10 @@
         element.setAttribute("data-collapsed", "false");
       }
 
-      let buttons = document.querySelectorAll(".toggle");
-      let sections = document.querySelectorAll(".dropdown.collapsible");
-      let chevrons = document.querySelectorAll(".fa-chevron-down");
-      let dropicons = document.querySelectorAll(".drop-icons");
-      //console.log(dropicon);
+      const buttons = document.querySelectorAll(".toggle");
+      const sections = document.querySelectorAll(".dropdown.collapsible");
+      const chevrons = document.querySelectorAll(".fa-chevron-down");
+      const dropicons = document.querySelectorAll(".drop-icons");
 
       sections.forEach((e) => {
         collapseSection(e);
@@ -892,11 +894,13 @@
         });
       });
 
-      const toggler = document.querySelector("#menu-control");
+      const togglers = document.querySelectorAll(".menu-control");
       const menu = document.querySelector("nav");
 
-      toggler.addEventListener("click", () => {
-        menu.classList.toggle("active");
+      togglers.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("active");
+        });
       });
     </script>
   </body>
