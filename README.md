@@ -45,7 +45,7 @@
 
 Cécilia Nguyen - ngcecilia@orange.fr
 
-Project Link: [https://github.com/cecilia-pocket/ICE-TEST](https://github.com/cecilia-pocket/ICE-TEST)
+Project Link: [https://github.com/nguyen-cecilia/ICE-TEST](https://github.com/nguyen-cecilia/ICE-TEST)
 
 <!-- RESOURCES -->
 ## Resources
