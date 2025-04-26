@@ -10,7 +10,7 @@
     Only front-end, responsive.
     <br />
     <br />
-    <a href="https://cecilia-pocket.github.io/ICE-TEST/">View Demo</a>
+    <a href="https://nguyen-cecilia.github.io/ICE-TEST/">View Demo</a>
   </p>
 </div>
 
